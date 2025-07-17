@@ -1,0 +1,59 @@
+/* Default styles for body */
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Styles for h1 tags */
+h1 {
+    color: #2c3e50;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Required hbar1 class */
+.hbar1 {
+    display: inline;
+    margin: 15px;
+}
+
+/* Additional optional styles */
+h2 {
+    color: #34495e;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 5px 0;
+}
+
+hr {
+    border: none;
+    height: 2px;
+    background-color: #bdc3c7;
+    margin: 20px 0;
+}
