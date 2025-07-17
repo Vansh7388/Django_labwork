@@ -1,8 +1,13 @@
 # Import necessary classes
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 from .models import Publisher, Book, Member, Order
 from .forms import FeedbackForm, SearchForm, OrderForm
+
+# Import necessary classes and models for authentication
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 
 # Create your views here.
@@ -20,6 +25,30 @@ def detail(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     # Passing book object as context variable
     return render(request, 'mywebsite/detail.html', {'book': book})
+
+
+# Authentication Views
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect(reverse('mywebsite:index'))
+            else:
+                return HttpResponse('Your account is disabled.')
+        else:
+            return HttpResponse('Invalid login details.')
+    else:
+        return render(request, 'mywebsite/login.html')
+
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('mywebsite:index'))
 
 
 # PART 1: Feedback Form View

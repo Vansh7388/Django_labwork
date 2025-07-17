@@ -1,0 +1,22 @@
+{% extends 'mywebsite/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block myhdg %}User Login{% endblock %}
+
+{% block body_block %}
+    <form action="{% url 'mywebsite:user_login' %}" method="post">
+        {% csrf_token %}
+        <p>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </p>
+        <p>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </p>
+        <p>
+            <input type="submit" value="Login">
+        </p>
+    </form>
+{% endblock %}

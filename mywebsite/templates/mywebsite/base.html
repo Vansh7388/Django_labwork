@@ -8,6 +8,17 @@
 <body>
     <div>
         <h1>{% block myhdg %}Hello User {% endblock %}</h1>
+
+        <!-- Authentication status -->
+        <div style="text-align: right; margin-bottom: 10px;">
+            {% if user.is_authenticated %}
+                <span>Welcome, {{ user.username }}!</span>
+                <a href="{% url 'mywebsite:user_logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'mywebsite:user_login' %}">Login</a>
+            {% endif %}
+        </div>
+
         {% block body_block %}*** {% endblock %}
     </div>
     <hr />
