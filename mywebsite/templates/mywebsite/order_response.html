@@ -1,0 +1,22 @@
+{% extends 'mywebsite/base.html' %}
+
+{% block title %}Order Confirmation{% endblock %}
+
+{% block myhdg %}Order Placed Successfully{% endblock %}
+
+{% block body_block %}
+    <h3>Order Details:</h3>
+    <p><strong>Order ID:</strong> {{ order.id }}</p>
+    <p><strong>Member:</strong> {{ order.member.first_name }} {{ order.member.last_name }}</p>
+    <p><strong>Order Type:</strong> {{ order.get_order_type_display }}</p>
+    <p><strong>Order Date:</strong> {{ order.order_date }}</p>
+    
+    <h4>Books in this order:</h4>
+    <ul>
+        {% for book in order.books.all %}
+            <li>{{ book.title }} - ${{ book.price }}</li>
+        {% endfor %}
+    </ul>
+    
+    <p>Thank you for your order!</p>
+{% endblock %}

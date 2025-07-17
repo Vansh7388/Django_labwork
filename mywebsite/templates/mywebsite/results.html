@@ -1,0 +1,31 @@
+{% extends 'mywebsite/base.html' %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block myhdg %}Book Search Results{% endblock %}
+
+{% block body_block %}
+    {% if name %}
+        <p>Hello {{ name }}!</p>
+    {% endif %}
+    
+    {% if category %}
+        <p>Books in category: {{ category }}</p>
+    {% else %}
+        <p>Books in all categories</p>
+    {% endif %}
+    
+    {% if booklist %}
+        <h3>Found {{ booklist|length }} book{{ booklist|length|pluralize }}:</h3>
+        <ul>
+            {% for book in booklist %}
+                <li>
+                    <a href="{% url 'mywebsite:detail' book.id %}">{{ book.title }}</a> 
+                    - ${{ book.price }} ({{ book.get_category_display }})
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No books found matching your criteria.</p>
+    {% endif %}
+{% endblock %}

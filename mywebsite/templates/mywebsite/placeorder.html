@@ -1,0 +1,13 @@
+{% extends 'mywebsite/base.html' %}
+
+{% block title %}Place Order{% endblock %}
+
+{% block myhdg %}Place a New Order{% endblock %}
+
+{% block body_block %}
+    <form action="{% url 'mywebsite:place_order' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Place Order" />
+    </form>
+{% endblock %}

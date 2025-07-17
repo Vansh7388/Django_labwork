@@ -13,4 +13,13 @@
     {% else %}
         <strong>There are no available books!</strong>
     {% endif %}
+
+    <div style="margin-top: 20px;">
+        <h3>Additional Features:</h3>
+        <ul>
+            <li><a href="{% url 'mywebsite:feedback' %}">Give Feedback on Book Preferences</a></li>
+            <li><a href="{% url 'mywebsite:findbooks' %}">Search for Books</a></li>
+            <li><a href="{% url 'mywebsite:place_order' %}">Place a New Order</a></li>
+        </ul>
+    </div>
 {% endblock %}

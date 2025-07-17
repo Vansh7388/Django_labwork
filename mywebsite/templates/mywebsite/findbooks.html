@@ -1,0 +1,13 @@
+{% extends 'mywebsite/base.html' %}
+
+{% block title %}Find Books{% endblock %}
+
+{% block myhdg %}Search for Books{% endblock %}
+
+{% block body_block %}
+    <form action="{% url 'mywebsite:findbooks' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" name="submit1" value="Find Books" />
+    </form>
+{% endblock %}
